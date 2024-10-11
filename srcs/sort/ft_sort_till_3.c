@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize.c                                       :+:      :+:    :+:   */
+/*   ft_sort_till_3.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmacau <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/05 21:16:23 by fmacau            #+#    #+#             */
-/*   Updated: 2024/10/05 21:16:24 by fmacau           ###   ########.fr       */
+/*   Created: 2024/10/11 14:30:51 by fmacau            #+#    #+#             */
+/*   Updated: 2024/10/11 14:30:54 by fmacau           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-int ft_lstsize(t_stack *stack)
+void    ft_sort_till_3(t_stack *stack_a)
 {
-    int len;
+    int max_index;
 
-    len = 0;
-    if (!stack)
-        return (0);
-    while (stack)
+    max_index = ft_max_index(stack_a);
+    while (stack_a)
     {
-       stack = stack->next;
-       len++;      
+        if (stack_a->index == max_index)
+            ft_ra(&stack_a, true);
+        if (stack_a->next->index == max_index)
+            ft_rra(&stack_a, true);
+        if (stack_a->nbr > stack_a->next->nbr)
+            ft_sa(&stack_a, true);
+        stack_a = stack_a->next;
     }
-    return (len);
 }

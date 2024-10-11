@@ -18,14 +18,14 @@ bool ft_check_sorted_1(char **av)
     bool is_sorted;
     char    **tmp;
     
-    i = 1;
+    i = 0;
     is_sorted = true;
     tmp = ft_split(av[1], ' ');
     if (tmp == NULL)
         return (true);
     while (tmp[i] != NULL)
     {
-        if (ft_atoi_long(tmp[i]) < ft_atoi_long(tmp[i - 1]))
+        if (i > 0 && ft_atoi_long(tmp[i]) < ft_atoi_long(tmp[i - 1]))
         {
             is_sorted = false;
             return (is_sorted);

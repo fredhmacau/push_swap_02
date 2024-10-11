@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sa.c                                            :+:      :+:    :+:   */
+/*   ft_max_index.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmacau <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/06 01:10:36 by fmacau            #+#    #+#             */
-/*   Updated: 2024/10/06 01:10:41 by fmacau           ###   ########.fr       */
+/*   Created: 2024/10/11 18:32:54 by fmacau            #+#    #+#             */
+/*   Updated: 2024/10/11 18:34:45 by fmacau           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-void    ft_sa(t_stack **stack_node_a, bool putstr)
+int    ft_max_index(t_stack *stack)
 {
-    t_stack *tmp_a;
+    int tmp;
 
-    if (!(*stack_node_a) || !(*stack_node_a)->next)
-        return ;
-    tmp_a = *stack_node_a;
-    *stack_node_a = (*stack_node_a)->next;
-    tmp_a->next = (*stack_node_a)->next;
-    if (putstr == true)
-        ft_putendl_fd("sa",1);
+    tmp = stack->index;
+    while (stack->next != NULL)
+    {
+        if (tmp < stack->next->index)
+            tmp = stack->next->index;
+        stack = stack->next;
+    }
+    return (tmp);
 }

@@ -18,5 +18,6 @@ void    ft_add_node_in_stack(t_stack **stack,t_stack *new_node)
         return;
     if (*stack == NULL)
         *stack = new_node;
-    (ft_lstnode(*stack))->next = new_node;
+    else
+        (ft_lstnode(*stack))->next = new_node;
 }

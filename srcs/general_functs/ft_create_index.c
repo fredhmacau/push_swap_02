@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize.c                                       :+:      :+:    :+:   */
+/*   ft_create_index.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmacau <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/05 21:16:23 by fmacau            #+#    #+#             */
-/*   Updated: 2024/10/05 21:16:24 by fmacau           ###   ########.fr       */
+/*   Created: 2024/10/10 10:29:17 by fmacau            #+#    #+#             */
+/*   Updated: 2024/10/10 10:30:09 by fmacau           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-int ft_lstsize(t_stack *stack)
+int ft_create_index(int i, char **av)
 {
-    int len;
+    int j;
+    int index;
 
-    len = 0;
-    if (!stack)
-        return (0);
-    while (stack)
+    j = 1;
+    index = 0;
+    while (av[j])
     {
-       stack = stack->next;
-       len++;      
+        if (ft_atoi_long(av[j]) < i)
+            index++;
+        j++;
     }
-    return (len);
+    return (index);
 }

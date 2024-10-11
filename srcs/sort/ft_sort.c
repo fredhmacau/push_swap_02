@@ -20,4 +20,6 @@ void    ft_sort(t_stack **stack_a)
         exit(1);
     if (ft_lstsize(*stack_a) == 2)
         ft_sa(stack_a, true);
+    if (ft_lstsize(*stack_a) == 3)
+        ft_sort_till_3(*stack_a);
 }

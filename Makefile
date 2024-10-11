@@ -20,12 +20,14 @@ SRC_1 = srcs/push_swap.c \
 SRC_2 = srcs/status/ft_error.c \
 		srcs/general_functs/ft_count.c \
 		srcs/general_functs/ft_atoi_long.c \
+		srcs/general_functs/ft_max_index.c \
 		srcs/checks_args/ft_check_any_arg.c \
 		srcs/checks_args/ft_check_only_arg.c \
 		srcs/check_sorted/ft_check_sorted_1.c \
 		srcs/check_sorted/ft_check_sorted_2.c \
-		srcs/operations/ft_sa.c \
+		srcs/operations/ft_operations_1.c \
 		srcs/sort/ft_sort.c \
+		srcs/sort/ft_sort_till_3.c \
 		srcs/stack_functs/ft_add_node_in_stack.c \
 		srcs/stack_functs/ft_create_node.c \
 		srcs/stack_functs/ft_free.c \
@@ -33,6 +35,7 @@ SRC_2 = srcs/status/ft_error.c \
 		srcs/stack_functs/ft_parse_arg.c \
 		srcs/stack_functs/ft_parse_sub_arg.c \
 		srcs/stack_functs/ft_lstsize.c \
+		srcs/general_functs/ft_create_index.c \
 		
 
 

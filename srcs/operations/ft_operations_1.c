@@ -27,16 +27,13 @@ void ft_sa(t_stack **stack_node_a, bool putstr)
 void ft_ra(t_stack **stack_a, bool putstr)
 {
     t_stack *tmp;
-    t_stack *last;
 
-    if (!(stack_a) || !(*stack_a)->next)
+    if (!*stack_a || !(*stack_a)->next)
         return;
     tmp = *stack_a;
-    last = *stack_a;
-    while (last->next)
-        last = last->next;
-    *stack_a = (*stack_a)->next;
-    last->next = tmp;
+    *stack_a = ft_lstnode(*stack_a);
+    (*stack_a)->next = tmp;
+    *stack_a = tmp->next;
     tmp->next = NULL;
     if (putstr == true)
         ft_putendl_fd("ra", 1);
@@ -44,17 +41,24 @@ void ft_ra(t_stack **stack_a, bool putstr)
 
 void ft_rra(t_stack **stack_a, bool putstr)
 {
-    t_stack *last;
     t_stack *tmp;
+    int i;
 
-    if (!(stack_a) || !(*stack_a)->next)
+    if (!*stack_a || !(*stack_a)->next)
         return;
-    last = *stack_a;
+    i = 0;
     tmp = *stack_a;
-    while (last->next)
-        last = last->next;
-    last->next = *stack_a;
-    *stack_a = (*stack_a)->next;
+    while ((*stack_a)->next)
+    {
+        *stack_a = (*stack_a)->next;
+        i++;
+    }
+    (*stack_a)->next = tmp;
+    while (i > 1)
+    {
+        tmp = tmp->next;
+        i--;
+    }
     tmp->next = NULL;
     if (putstr == true)
         ft_putendl_fd("rra", 1);

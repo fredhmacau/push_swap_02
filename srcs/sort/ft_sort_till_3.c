@@ -24,7 +24,11 @@ void    ft_sort_till_3(t_stack **stack_a)
             ft_sa(stack_a, true);
     }
     else if ((*stack_a)->next->index == max_index)
+    {
         ft_rra(stack_a, true);
+        if ((*stack_a)->nbr > (*stack_a)->next->nbr)
+            ft_sa(stack_a, true);
+    }
     else 
         if ((*stack_a)->nbr > (*stack_a)->next->nbr)
             ft_sa(stack_a, true);

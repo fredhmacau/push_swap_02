@@ -25,10 +25,11 @@ bool ft_check_only_arg(char **av)
         return (false);
     while (tmp[i])
     {
+        if (tmp[i][0] == '-' || tmp[i][0] == '+')
+            j++;
         while (tmp[i][j])
         {
-            if (!ft_strchr("0123456789-", tmp[i][j]) ||
-                ft_count(tmp, ft_atoi_long(tmp[i])) > 1)
+            if (!ft_isdigit(tmp[i][j]))
                 return (false);
             j++;
         }

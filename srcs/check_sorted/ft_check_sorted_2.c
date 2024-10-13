@@ -17,11 +17,11 @@ bool ft_check_sorted_2(char **av)
     int i;
     bool is_sorted;
     
-    i = 1;
+    i = 2;
     is_sorted = true;
     while (av[i] != NULL)
     {
-        if (ft_atoi_long(av[i]) < ft_atoi_long(av[i - 1]))
+        if (i > 0 && ft_atoi_long(av[i]) < ft_atoi_long(av[i - 1]))
         {
             is_sorted = false;
             return (is_sorted);

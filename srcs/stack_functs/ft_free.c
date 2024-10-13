@@ -26,3 +26,15 @@ void    ft_free(t_stack **stack)
         (*stack) = tmp;
     }
 }
+
+void    ft_free_stack(t_stack *stack)
+{
+    t_stack *tmp;
+
+    while (stack)
+    {
+        tmp = stack->next;
+        free(stack);
+        stack = tmp;
+    }
+}

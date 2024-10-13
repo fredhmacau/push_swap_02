@@ -27,14 +27,18 @@ SRC_2 = srcs/status/ft_error.c \
 		srcs/check_sorted/ft_check_sorted_1.c \
 		srcs/check_sorted/ft_check_sorted_2.c \
 		srcs/operations/ft_operations_1.c \
+		srcs/operations/ft_operations_2.c \
+		srcs/operations/ft_operations_sub.c \
 		srcs/sort/ft_sort.c \
 		srcs/sort/ft_sort_till_3.c \
 		srcs/sort/ft_sort_till_4.c \
 		srcs/sort/ft_sort_till_5.c \
+		srcs/sort/ft_sort_big_numbers.c \
 		srcs/stack_functs/ft_add_node_in_stack.c \
 		srcs/stack_functs/ft_create_node.c \
 		srcs/stack_functs/ft_free.c \
 		srcs/stack_functs/ft_lstnode.c \
+		srcs/stack_functs/ft_first_node.c \
 		srcs/stack_functs/ft_parse_arg.c \
 		srcs/stack_functs/ft_parse_sub_arg.c \
 		srcs/stack_functs/ft_lstsize.c \

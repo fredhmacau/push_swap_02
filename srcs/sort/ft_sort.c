@@ -26,4 +26,7 @@ void    ft_sort(t_stack **stack_a)
         ft_sort_till_4(stack_a);
     if (ft_lstsize(*stack_a) == 5)
         ft_sort_till_5(stack_a);
+    if (ft_lstsize(*stack_a) > 5)
+        ft_sort_big_numbers(stack_a);
+
 }

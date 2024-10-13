@@ -24,5 +24,5 @@ void    ft_sort_till_4(t_stack **stack_a)
     ft_pb(stack_a, &stack_b, true);
     ft_sort_till_3(stack_a);
     ft_pa(stack_a, &stack_b, true);
-    free(stack_b);
+    ft_free(&stack_b);
 }

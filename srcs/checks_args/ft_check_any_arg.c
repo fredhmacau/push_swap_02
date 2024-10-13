@@ -25,6 +25,8 @@ bool ft_check_any_arg(char **av)
             j++;
         while (av[i][j])
         {
+            if (!ft_strchr("0123456789-", av[i][j]) ||
+                ft_count(av, ft_atoi_long(av[i])) > 1)
             if (!ft_isdigit(av[i][j]))
                 return (false);
             j++;

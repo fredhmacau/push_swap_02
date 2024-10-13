@@ -31,6 +31,8 @@ bool ft_check_only_arg(char **av)
         {
             if (!ft_isdigit(tmp[i][j]))
                 return (false);
+            if (ft_count(tmp, ft_atoi_long(tmp[i])) > 1)
+                return (false);
             j++;
         }
         j = 0;

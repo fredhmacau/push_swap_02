@@ -1,35 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_check_any_arg.c                                 :+:      :+:    :+:   */
+/*   ft_sort_till_5.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmacau <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/05 14:50:21 by fmacau            #+#    #+#             */
-/*   Updated: 2024/10/05 14:50:23 by fmacau           ###   ########.fr       */
+/*   Created: 2024/10/13 04:04:18 by fmacau            #+#    #+#             */
+/*   Updated: 2024/10/13 04:04:21 by fmacau           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-bool ft_check_any_arg(char **av)
+void ft_sort_till_5(t_stack **stack_a)
 {
-    int     i;
-    int     j;
+    int min_index;
+    t_stack *stack_b;
 
-    i = 1;
-    j = 0;
-    while (av[i])
-    {
-        while (av[i][j])
-        {
-            if (!ft_strchr("0123456789-", av[i][j]) ||
-                ft_count(av, ft_atoi_long(av[i])) > 1)
-                return (false);
-            j++;
-        }
-        j = 0;
-        i++; 
-    }
-    return (true);
+    stack_b = NULL;
+    min_index = ft_min_index((*stack_a));
+    while ((*stack_a)->index != min_index)
+        ft_ra(stack_a, true);
+    ft_pb(stack_a, &stack_b, true);
+    ft_sort_till_4(stack_a);
+    ft_pa(stack_a, &stack_b, true);
+    free(stack_b);
 }

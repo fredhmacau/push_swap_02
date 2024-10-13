@@ -44,19 +44,46 @@ void ft_ra(t_stack **stack_a, bool putstr)
 
 void ft_rra(t_stack **stack_a, bool putstr)
 {
-    t_stack *tmp;
     t_stack *last;
+    t_stack *tmp;
 
     if (!(stack_a) || !(*stack_a)->next)
         return;
-    tmp = *stack_a;
     last = *stack_a;
+    tmp = *stack_a;
     while (last->next)
         last = last->next;
     last->next = *stack_a;
     *stack_a = (*stack_a)->next;
-    last = tmp;
-    last->next = NULL;
+    tmp->next = NULL;
     if (putstr == true)
         ft_putendl_fd("rra", 1);
+}
+
+void    ft_pb(t_stack **stack_a, t_stack **stack_b, bool putstr)
+{
+    t_stack *tmp;
+
+    if (!(*stack_a) || !(*stack_a)->next)
+        return;
+    tmp = *stack_a;
+    *stack_a = (*stack_a)->next;
+    tmp->next = NULL;
+    ft_add_node_in_stack(stack_b, tmp);
+    if (putstr == true)
+        ft_putendl_fd("pb", 1);
+}
+
+void ft_pa(t_stack **stack_a, t_stack **stack_b, bool putstr)
+{
+    t_stack *tmp;
+
+    if (!(*stack_b))
+        return;
+    tmp = *stack_b;
+    *stack_b = (*stack_b)->next;
+    tmp->next = *stack_a;
+    *stack_a = tmp;
+    if (putstr == true)
+        ft_putendl_fd("pa", 1);
 }

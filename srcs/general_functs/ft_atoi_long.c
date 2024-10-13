@@ -27,15 +27,15 @@ int ft_atoi_long(char *str)
     while (str[i] < 32)
         i++;
     if (str[i] == '+' || str[i] == '-')
-        if (str[i] == '-')
+        if (str[i++] == '-')
             sign = -1;
     while (str[i] && ft_isdigit(str[i]))
     {
         res *= 10;
-        res += str[i] - 48;
+        res += (str[i] - 48) * sign;
         i++;
     }
-    check_nbr = (res * sign);
+    check_nbr = res;
     if (check_nbr > 2147483647 || check_nbr < -2147483648)
         ft_error();
     return (check_nbr);

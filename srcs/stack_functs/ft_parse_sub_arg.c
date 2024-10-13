@@ -12,6 +12,22 @@
 
 #include "../../includes/push_swap.h"
 
+int ft_create_index_sub(int i, char **av)
+{
+    int j;
+    int index;
+
+    j = 0;
+    index = 0;
+    while (av[j])
+    {
+        if (ft_atoi_long(av[j]) < i)
+            index++;
+        j++;
+    }
+    return (index);
+}
+
 t_stack    *ft_parse_sub_arg(char **av)
 {
     char **tmp;
@@ -29,7 +45,7 @@ t_stack    *ft_parse_sub_arg(char **av)
     while (tmp[i])
     {
         atoi_value = ft_atoi_long(tmp[i]);
-        index_value = ft_create_index(atoi_value, tmp);
+        index_value = ft_create_index_sub(atoi_value, tmp);
         new_node = ft_create_node(atoi_value, index_value);
         ft_add_node_in_stack(&stack_a, new_node);
         i++;

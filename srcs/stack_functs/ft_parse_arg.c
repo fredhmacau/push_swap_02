@@ -22,8 +22,8 @@ t_stack    *ft_parse_arg(int ac,char **av)
 
     i = 1;
     stack_a = NULL;
-    if (ac == 2) 
-        ft_parse_sub_arg(av);
+    if (ac == 2)
+        return (ft_parse_sub_arg(av));
     else
     {
         while (i < ac)

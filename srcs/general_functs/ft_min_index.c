@@ -1,35 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_check_any_arg.c                                 :+:      :+:    :+:   */
+/*   ft_min_index.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmacau <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/05 14:50:21 by fmacau            #+#    #+#             */
-/*   Updated: 2024/10/05 14:50:23 by fmacau           ###   ########.fr       */
+/*   Created: 2024/10/13 02:03:36 by fmacau            #+#    #+#             */
+/*   Updated: 2024/10/13 02:03:37 by fmacau           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-bool ft_check_any_arg(char **av)
+int ft_min_index(t_stack *stack)
 {
-    int     i;
-    int     j;
+    int tmp;
 
-    i = 1;
-    j = 0;
-    while (av[i])
+    tmp = stack->index;
+    while (stack->next != NULL)
     {
-        while (av[i][j])
-        {
-            if (!ft_strchr("0123456789-", av[i][j]) ||
-                ft_count(av, ft_atoi_long(av[i])) > 1)
-                return (false);
-            j++;
-        }
-        j = 0;
-        i++; 
+        if (tmp > stack->next->index)
+            tmp = stack->next->index;
+        stack = stack->next;
     }
-    return (true);
+    return (tmp);
 }

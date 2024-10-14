@@ -6,22 +6,22 @@
 /*   By: fmacau <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 02:03:36 by fmacau            #+#    #+#             */
-/*   Updated: 2024/10/13 02:03:37 by fmacau           ###   ########.fr       */
+/*   Updated: 2024/10/14 09:45:06 by fmacau           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-int ft_min_index(t_stack *stack)
+int	ft_min_index(t_stack *stack)
 {
-    int tmp;
+	int	tmp;
 
-    tmp = stack->index;
-    while (stack->next != NULL)
-    {
-        if (tmp > stack->next->index)
-            tmp = stack->next->index;
-        stack = stack->next;
-    }
-    return (tmp);
+	tmp = stack->index;
+	while (stack->next != NULL)
+	{
+		if (tmp > stack->next->index)
+			tmp = stack->next->index;
+		stack = stack->next;
+	}
+	return (tmp);
 }

@@ -6,14 +6,14 @@
 /*   By: fmacau <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 12:51:25 by fmacau            #+#    #+#             */
-/*   Updated: 2024/10/05 12:51:26 by fmacau           ###   ########.fr       */
+/*   Updated: 2024/10/14 11:06:06 by fmacau           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-void    ft_error(void)
+void	ft_error(void)
 {
-    ft_putendl_fd("Error",1);
-    exit(1);
+	ft_putendl_fd("Error", 1);
+	exit(1);
 }

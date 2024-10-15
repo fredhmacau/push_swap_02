@@ -12,16 +12,18 @@
 
 #include "../../includes/push_swap.h"
 
-int	ft_min_index(t_stack *stack)
+int	ft_get_min(t_stack **stack, int val)
 {
-	int	tmp;
+	t_stack	*head;
+	int		min;
 
-	tmp = stack->index;
-	while (stack->next != NULL)
+	head = *stack;
+	min = head->index;
+	while (head->next)
 	{
-		if (tmp > stack->next->index)
-			tmp = stack->next->index;
-		stack = stack->next;
+		head = head->next;
+		if ((head->index < min) && head->index != val)
+			min = head->index;
 	}
-	return (tmp);
+	return (min);
 }

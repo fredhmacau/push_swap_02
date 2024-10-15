@@ -5,76 +5,70 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmacau <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/11 19:31:11 by fmacau            #+#    #+#             */
-/*   Updated: 2024/10/14 10:07:17 by fmacau           ###   ########.fr       */
+/*   Created: 2024/10/15 06:17:56 by fmacau            #+#    #+#             */
+/*   Updated: 2024/10/15 08:01:58 by fmacau           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-void	ft_rrb(t_stack **stack_b, bool putstr)
+int	swap(t_stack **stack)
 {
-	t_stack	*tmp;
-	int		i;
+	t_stack	*head;
+	t_stack	*next;
+	int		tmp_val;
+	int		tmp_index;
 
-	if (!*stack_b || !(*stack_b)->next)
-		return ;
-	i = 0;
-	tmp = *stack_b;
-	while ((*stack_b)->next)
-	{
-		*stack_b = (*stack_b)->next;
-		i++;
-	}
-	(*stack_b)->next = tmp;
-	while (i > 1)
-	{
-		tmp = tmp->next;
-		i--;
-	}
-	tmp->next = NULL;
-	if (putstr == true)
-		ft_putendl_fd("rrb", 1);
-}
-
-void	ft_rb(t_stack **stack_b, bool putstr)
-{
-	t_stack	*tmp;
-
-	if (!*stack_b || !(*stack_b)->next)
-		return ;
-	tmp = *stack_b;
-	*stack_b = ft_lstnode(*stack_b);
-	(*stack_b)->next = tmp;
-	*stack_b = tmp->next;
-	tmp->next = NULL;
-	if (putstr == true)
-		ft_putendl_fd("rb", 1);
-}
-
-int	push(t_stack **stack_to, t_stack **stack_from)
-{
-	t_stack	*tmp;
-	t_stack	*head_to;
-	t_stack	*head_from;
-
-	if (ft_lstsize(*stack_from) == 0)
+	if (ft_lstsize(*stack) < 2)
 		return (-1);
-	head_to = *stack_to;
-	head_from = *stack_from;
-	tmp = head_from;
-	head_from = head_from->next;
-	*stack_from = head_from;
-	if (!head_to)
+	head = *stack;
+	next = head->next;
+	if (!head && !next)
+		return (-1);
+	tmp_val = head->nbr;
+	tmp_index = head->index;
+	head->nbr = next->nbr;
+	head->index = next->index;
+	next->nbr = tmp_val;
+	next->index = tmp_index;
+	return (0);
+}
+
+int	ft_sub_sa(t_stack **stack_a)
+{
+	if (swap(stack_a) == -1)
+		return (-1);
+	ft_putendl_fd("sa", 1);
+	return (0);
+}
+
+int	ft_reverse_rotate(t_stack **stack)
+{
+	t_stack	*head;
+	t_stack	*tail;
+
+	if (ft_lstsize(*stack) < 2)
+		return (-1);
+	head = *stack;
+	tail = ft_lstnode(head);
+	while (head)
 	{
-		head_to = tmp;
-		head_to->next = NULL;
-		*stack_to = head_to;
+		if (head->next->next == NULL)
+		{
+			head->next = NULL;
+			break ;
+		}
+		head = head->next;
 	}
-	else
-	{
-		tmp->next = head_to;
-		*stack_to = tmp;
-	}
+	tail->next = *stack;
+	*stack = tail;
+	return (0);
+}
+
+int	ft_sub_rra(t_stack **stack_a)
+{
+	if (ft_reverse_rotate(stack_a) == -1)
+		return (-1);
+	ft_putendl_fd("rra", 1);
 	return (0);
 }

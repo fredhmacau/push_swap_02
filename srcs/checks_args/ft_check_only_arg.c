@@ -6,36 +6,65 @@
 /*   By: fmacau <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 14:50:07 by fmacau            #+#    #+#             */
-/*   Updated: 2024/10/14 09:29:58 by fmacau           ###   ########.fr       */
+/*   Updated: 2024/10/15 07:43:05 by fmacau           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-bool	ft_check_only_arg(char **av)
+static int	ft_contains(int num, char **argv, int i)
 {
-	char	**tmp;
-	int		i;
-	int		j;
-
-	i = 0;
-	j = 0;
-	tmp = ft_split(av[1], ' ');
-	if (tmp == NULL)
-		return (false);
-	while (tmp[i])
+	i++;
+	while (argv[i])
 	{
-		if (tmp[i][0] == '-' || tmp[i][0] == '+')
-			j++;
-		while (tmp[i][j])
-		{
-			if (!ft_check_dup_and_chr(tmp, tmp[i][j], tmp[i]))
-				return (false);
-			j++;
-		}
-		j = 0;
+		if (ft_atoi(argv[i]) == num)
+			return (1);
 		i++;
 	}
-	free(tmp);
-	return (true);
+	return (0);
+}
+
+static int	ft_isnum(char *num)
+{
+	int	i;
+
+	i = 0;
+	if (num[0] == '-')
+		i++;
+	while (num[i])
+	{
+		if (!ft_isdigit(num[i]))
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+void	ft_check_args(int argc, char **argv)
+{
+	int		i;
+	long	tmp;
+	char	**args;	
+
+	i = 0;
+	if (argc == 2)
+		args = ft_split(argv[1], ' ');
+	else
+	{
+		i = 1;
+		args = argv;
+	}
+	while (args[i])
+	{
+		tmp = ft_atoi(args[i]);
+		if (!ft_isnum(args[i]))
+			ft_error();
+		if (ft_contains(tmp, args, i))
+			ft_error();
+		if (tmp < -2147483648 || tmp > 2147483647)
+			ft_error();
+		i++;
+	}
+	if (argc == 2)
+		ft_free(args);
 }

@@ -12,16 +12,19 @@
 
 #include "../../includes/push_swap.h"
 
-int	ft_max_index(t_stack *stack)
+int	ft_get_distance(t_stack **stack, int index)
 {
-	int	tmp;
+	t_stack	*head;
+	int		distance;
 
-	tmp = stack->index;
-	while (stack->next != NULL)
+	distance = 0;
+	head = *stack;
+	while (head)
 	{
-		if (tmp < stack->next->index)
-			tmp = stack->next->index;
-		stack = stack->next;
+		if (head->index == index)
+			break ;
+		distance++;
+		head = head->next;
 	}
-	return (tmp);
+	return (distance);
 }

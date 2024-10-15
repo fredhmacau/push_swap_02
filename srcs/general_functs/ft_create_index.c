@@ -12,18 +12,40 @@
 
 #include "../../includes/push_swap.h"
 
-int	ft_create_index(int i, char **av)
+static t_stack	*get_next_min(t_stack **stack)
 {
-	int	j;
-	int	index;
+	t_stack	*head;
+	t_stack	*min;
+	int		has_min;
 
-	j = 1;
-	index = 0;
-	while (av[j])
+	min = NULL;
+	has_min = 0;
+	head = *stack;
+	if (head)
 	{
-		if (ft_atoi_long(av[j]) < i)
-			index++;
-		j++;
+		while (head)
+		{
+			if ((head->index == -1) && (!has_min || head->nbr < min->nbr))
+			{
+				min = head;
+				has_min = 1;
+			}
+			head = head->next;
+		}
 	}
-	return (index);
+	return (min);
+}
+
+void	ft_index_stack(t_stack **stack)
+{
+	t_stack	*head;
+	int		index;
+
+	index = 0;
+	head = get_next_min(stack);
+	while (head)
+	{
+		head->index = index++;
+		head = get_next_min(stack);
+	}
 }

@@ -12,7 +12,7 @@
 
 #include "../../includes/push_swap.h"
 
-t_stack	*ft_create_node(int nbr, int index)
+t_stack	*ft_create_node(int nbr)
 {
 	t_stack	*new_node;
 
@@ -20,7 +20,8 @@ t_stack	*ft_create_node(int nbr, int index)
 	if (!new_node)
 		ft_error();
 	new_node->nbr = nbr;
-	new_node->index = index;
+	new_node->index = -1;
+	new_node->prev = NULL;
 	new_node->next = NULL;
 	return (new_node);
 }

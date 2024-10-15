@@ -6,7 +6,7 @@
 #    By: fmacau <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/05 12:54:53 by fmacau            #+#    #+#              #
-#    Updated: 2024/10/15 01:34:10 by fmacau           ###   ########.fr        #
+#    Updated: 2024/10/05 12:54:54 by fmacau           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,18 +18,12 @@ FLAGS = -Wall -Werror -Wextra
 SRC_1 = srcs/push_swap.c \
 
 SRC_2 = srcs/status/ft_error.c \
-		srcs/general_functs/ft_count.c \
-		srcs/general_functs/ft_atoi_long.c \
+		srcs/checks_args/ft_check_only_arg.c \
 		srcs/general_functs/ft_max_index.c \
 		srcs/general_functs/ft_min_index.c \
-		srcs/checks_args/ft_check_any_arg.c \
-		srcs/checks_args/ft_check_only_arg.c \
-		srcs/checks_args/ft_check_all.c \
-		srcs/check_sorted/ft_check_sorted_1.c \
-		srcs/check_sorted/ft_check_sorted_2.c \
-		srcs/operations/ft_operations_1.c \
+		srcs/operations/ft_operations.c \
 		srcs/operations/ft_operations_2.c \
-		srcs/operations/ft_operations_sub.c \
+		srcs/operations/ft_operations_3.c \
 		srcs/sort/ft_sort.c \
 		srcs/sort/ft_sort_till_3.c \
 		srcs/sort/ft_sort_till_4.c \
@@ -38,13 +32,9 @@ SRC_2 = srcs/status/ft_error.c \
 		srcs/stack_functs/ft_add_node_in_stack.c \
 		srcs/stack_functs/ft_create_node.c \
 		srcs/stack_functs/ft_free.c \
-		srcs/stack_functs/ft_is_sorted_stack.c \
 		srcs/stack_functs/ft_lstnode.c \
 		srcs/stack_functs/ft_first_node.c \
-		srcs/stack_functs/ft_parse_arg.c \
-		srcs/stack_functs/ft_parse_sub_arg.c \
 		srcs/stack_functs/ft_lstsize.c \
-		srcs/stack_functs/ft_check_sorted_a.c \
 		srcs/general_functs/ft_create_index.c \
 		
 

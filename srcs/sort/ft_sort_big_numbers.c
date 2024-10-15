@@ -6,7 +6,7 @@
 /*   By: fmacau <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 08:35:15 by fmacau            #+#    #+#             */
-/*   Updated: 2024/10/15 00:35:08 by fmacau           ###   ########.fr       */
+/*   Updated: 2024/10/14 12:18:59 by fmacau           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,15 @@ static int	get_max_bits(t_stack **stack)
 void	ft_sort_big_numbers(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack	*head_a;
-	int		size;
-	int		max_bits;
 	int		i;
 	int		j;
+	int		size;
+	int		max_bits;
 
-	head_a = *stack_a;
 	i = 0;
-	max_bits = get_max_bits(stack_a);
+	head_a = *stack_a;
 	size = ft_lstsize(head_a);
+	max_bits = get_max_bits(stack_a);
 	while (i < max_bits)
 	{
 		j = 0;

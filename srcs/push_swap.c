@@ -6,30 +6,66 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 12:06:56 by fmacau            #+#    #+#             */
-/*   Updated: 2024/10/15 01:34:44 by fmacau           ###   ########.fr       */
+/*   Updated: 2024/10/15 08:00:31 by fmacau           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	main(int ac, char **av)
+static void	ft_init_stack(t_stack **stack, int argc, char **argv)
+{
+	t_stack	*new;
+	char	**args;
+	int		i;
+
+	i = 0;
+	if (argc == 2)
+		args = ft_split(argv[1], ' ');
+	else
+	{
+		i = 1;
+		args = argv;
+	}
+	while (args[i])
+	{
+		new = ft_create_node(ft_atoi(args[i]));
+		ft_add_node_in_stack(stack, new);
+		i++;
+	}
+	ft_index_stack(stack);
+	if (argc == 2)
+		ft_free(args);
+}
+
+static void	sort_stack(t_stack **stack_a, t_stack **stack_b)
+{
+	if (ft_lstsize(*stack_a) <= 5)
+		ft_sort(stack_a, stack_b);
+	else
+		ft_sort_big_numbers(stack_a, stack_b);
+}
+
+int	main(int argc, char **argv)
 {
 	t_stack	**stack_a;
 	t_stack	**stack_b;
 
-	if (ac < 2)
-		exit(1);
-	ft_check_all(ac, av);
-	stack_a = NULL;
-	stack_b = NULL;
-	ft_parse_arg(stack_a, ac, av);
-	if (ft_is_sorted_stack(stack_a))
+	if (argc < 2)
+		return (-1);
+	ft_check_args(argc, argv);
+	stack_a = (t_stack **)malloc(sizeof(t_stack));
+	stack_b = (t_stack **)malloc(sizeof(t_stack));
+	*stack_a = NULL;
+	*stack_b = NULL;
+	ft_init_stack(stack_a, argc, argv);
+	if (is_sorted(stack_a))
 	{
-		ft_free(stack_a);
-		ft_free(stack_b);
+		free_stack(stack_a);
+		free_stack(stack_b);
 		return (0);
 	}
-	ft_free(stack_a);
-	ft_free(stack_b);
+	sort_stack(stack_a, stack_b);
+	free_stack(stack_a);
+	free_stack(stack_b);
 	return (0);
 }

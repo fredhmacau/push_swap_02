@@ -21,7 +21,6 @@ t_stack	*ft_create_node(int nbr, int index)
 		ft_error();
 	new_node->nbr = nbr;
 	new_node->index = index;
-	new_node->prev = NULL;
 	new_node->next = NULL;
 	return (new_node);
 }

@@ -6,34 +6,39 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 21:29:23 by fmacau            #+#    #+#             */
-/*   Updated: 2024/10/14 10:57:00 by fmacau           ###   ########.fr       */
+/*   Updated: 2024/10/15 01:49:04 by fmacau           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-t_stack	*ft_parse_arg(int ac, char **av)
+void	ft_parse_arg(t_stack **stack, int ac, char **av)
 {
-	long int	atoi_value;
-	t_stack		*stack_a;
-	t_stack		*new_node;
-	int			i;
-	int			index_value;
+	
+	int		i;
+	int		value;
+	int		index;
+	t_stack	*new_node;
+	char	**args;
 
-	i = 1;
-	stack_a = NULL;
+	i = 0;
+	value = 0;
+	index = 0;
 	if (ac == 2)
-		return (ft_parse_sub_arg(av));
+		args = ft_split(av[1], ' ');
 	else
 	{
-		while (i < ac)
-		{
-			atoi_value = ft_atoi_long(av[i]);
-			index_value = ft_create_index(atoi_value, av);
-			new_node = ft_create_node(atoi_value, index_value);
-			ft_add_node_in_stack(&stack_a, new_node);
-			i++;
-		}
+		i = 1;
+		args = av;
 	}
-	return (stack_a);
+	while (args[i])
+	{	
+		value = ft_atoi(args[i]);
+		index = ft_create_index(value, args);
+		new_node = ft_create_node(value, index);
+		ft_add_node_in_stack(stack, new_node);
+		i++;
+	}
+	if (ac == 2)
+		ft_freestr(args);
 }

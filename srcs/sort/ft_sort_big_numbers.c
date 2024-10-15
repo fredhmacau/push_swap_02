@@ -6,7 +6,7 @@
 /*   By: fmacau <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 08:35:15 by fmacau            #+#    #+#             */
-/*   Updated: 2024/10/14 12:18:59 by fmacau           ###   ########.fr       */
+/*   Updated: 2024/10/15 00:35:08 by fmacau           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,16 @@ static int	get_max_bits(t_stack **stack)
 	return (max_bits);
 }
 
-void	ft_sort_big_numbers(t_stack **stack_a, int i, int j)
+void	ft_sort_big_numbers(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack	*head_a;
-	t_stack	*stack_b;
 	int		size;
 	int		max_bits;
+	int		i;
+	int		j;
 
 	head_a = *stack_a;
-	stack_b = NULL;
+	i = 0;
 	max_bits = get_max_bits(stack_a);
 	size = ft_lstsize(head_a);
 	while (i < max_bits)
@@ -52,11 +53,10 @@ void	ft_sort_big_numbers(t_stack **stack_a, int i, int j)
 			if (((head_a->index >> i) & 1) == 1)
 				ft_sub_ra(stack_a);
 			else
-				ft_sub_pb(stack_a, &stack_b);
+				ft_sub_pb(stack_a, stack_b);
 		}
-		while (ft_lstsize(stack_b) != 0)
-			ft_sub_pa(stack_a, &stack_b);
+		while (ft_lstsize(*stack_b) != 0)
+			ft_sub_pa(stack_a, stack_b);
 		i++;
 	}
-	free(stack_b);
 }

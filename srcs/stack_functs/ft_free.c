@@ -6,7 +6,7 @@
 /*   By: fmacau <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 19:29:00 by fmacau            #+#    #+#             */
-/*   Updated: 2024/10/14 10:57:53 by fmacau           ###   ########.fr       */
+/*   Updated: 2024/10/15 01:33:13 by fmacau           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,28 @@
 
 void	ft_free(t_stack **stack)
 {
-	t_stack	*tmp;
+	t_stack *head;
+	t_stack *tmp;
 
-	if (!stack)
-		return ;
-	while (*stack != NULL)
+	head = *stack;
+	while (head)
 	{
-		tmp = (*stack)->next;
-		(*stack)->nbr = 0;
-		free(*stack);
-		(*stack) = tmp;
+		tmp = head;
+		head = head->next;
+		free(tmp);
 	}
+	free(stack);
 }
+void	ft_freestr(char **str)
+{
+	int	i;
 
+	i = 0;
+	while (str[i])
+		i++;
+	while (i >= 0)
+		free(str[i--]);
+}
 void	ft_free_stack(t_stack *stack)
 {
 	t_stack	*tmp;

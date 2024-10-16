@@ -6,7 +6,7 @@
 /*   By: fmacau <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 14:50:07 by fmacau            #+#    #+#             */
-/*   Updated: 2024/10/16 09:41:09 by fmacau           ###   ########.fr       */
+/*   Updated: 2024/10/16 13:05:19 by fmacau           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ static int	ft_isnum(char *num)
 	i = 0;
 	if (num[0] == '-' || num[0] == '+')
 		i++;
+	if (num[i] == '\0')
+		return (0);
 	while (num[i])
 	{
 		if (!ft_isdigit(num[i]))
@@ -51,15 +53,31 @@ void	ft_put_error_memory_free(char **args, int argc)
 	}
 }
 
+void	ft_process(char **args, int i, int argc)
+{
+	long	tmp;
+
+	tmp = ft_atoi(args[i]);
+	if (!ft_isnum(args[i]))
+		ft_put_error_memory_free(args, argc);
+	if (ft_contains(tmp, args, i))
+		ft_put_error_memory_free(args, argc);
+	if (tmp < -2147483648 || tmp > 2147483647)
+		ft_put_error_memory_free(args, argc);
+}
+
 void	ft_check_args(int argc, char **argv)
 {
 	int		i;
-	long	tmp;
 	char	**args;	
 
 	i = 0;
 	if (argc == 2)
+	{
 		args = ft_split(argv[1], ' ');
+		if (args[0] == NULL)
+			ft_put_error_memory_free(args, argc);
+	}
 	else
 	{
 		i = 1;
@@ -67,13 +85,7 @@ void	ft_check_args(int argc, char **argv)
 	}
 	while (args[i])
 	{
-		tmp = ft_atoi(args[i]);
-		if (!ft_isnum(args[i]))
-			ft_put_error_memory_free(args, argc);
-		if (ft_contains(tmp, args, i))
-			ft_put_error_memory_free(args, argc);
-		if (tmp < -2147483648 || tmp > 2147483647)
-			ft_put_error_memory_free(args, argc);
+		ft_process(args, i, argc);
 		i++;
 	}
 	if (argc == 2)

@@ -6,7 +6,7 @@
 #    By: fmacau <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/05 12:54:53 by fmacau            #+#    #+#              #
-#    Updated: 2024/10/05 12:54:54 by fmacau           ###   ########.fr        #
+#    Updated: 2024/10/18 07:35:13 by fmacau           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,10 +56,10 @@ all: ${NAME}
 clean: 
 		${RM} ${OBJ_1} ${OBJ_2} ${NAME}
 		@cd ${LIBFT} && ${MAKE} clean
-fclean:
+fclean: clean
 		${RM} ${NAME}
 		@cd ${LIBFT} && ${MAKE} fclean
 
-re: clean all
+re: fclean all
 
 .PHONY: all clean fclean re
